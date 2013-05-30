@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>Aulas Localmente v.0.1</title>
+		<meta charset="UTF-8">
+		<meta content="Video Aulas Offline" name="description">
+		<meta content="General" name="rating">
+		<meta content="Proto" name="author">
+		<meta content="Educ. Bruno" name="author">
+		<meta content="Sandro Reis" name="author">
+		<style type="text/css" media="screen">
+			/*
+			reset css
+			*/
+			html, body, div, span, applet, object, iframe, table, caption,
+			tbody, tfoot, thead, tr, th, td, del, dfn, em, font, img, ins,
+			kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
+			h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr,
+			acronym, address, big, cite, code, dl, dt, dd, ol, ul, li,
+			fieldset, form, label, legend {
+			    vertical-align: baseline;
+			    font-family: inherit;
+			    font-weight: inherit;
+			    font-style: inherit;
+			    font-size: 100%;
+			    outline: 0;
+			    padding: 0;
+			    margin: 0;
+			    border: 0;
+			}
+			:focus {
+			    outline: 0;
+			}
+			body {
+			    background: white;
+				position:relative;
+			    color: black;
+			}
+			ol, ul {
+			    list-style: none;
+			}
+			table {
+			    border-collapse: separate;
+			    border-spacing: 0;
+			}
+			caption, th, td {
+			    font-weight: normal;
+			    text-align: left;
+			}
+			blockquote:before, blockquote:after, q:before, q:after {
+			    content: "";
+			}
+			blockquote, q {
+			    quotes: "" "";
+			}
+			/*
+			reset css
+			*/
+			*,html,body {
+				padding:0;
+				margin:0;
+				color: #333333;
+				font-family:Arial, Helvetica, sans-serif;
+			}
+			#selector{
+				background-color:#0071BC;
+				padding: 20px;
+				padding-top:5px;
+				position: relative;
+			}
+			h2{
+				font-weight:normal;
+				color:white;
+				font-size:1.5em;
+			}
+			strong{
+				font-weight: bold;
+			}
+			h2>strong{
+				font-size:2em;
+				color:#FBB03B;
+				margin-right:10px;
+			}
+			select{
+				    border: 1px solid #004080;
+				    font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+				    font-size: 11px;
+				    padding: 2px;
+
+					margin: 2px 0 0;
+					font-size: 13px;
+    				height: 30px;
+    				padding: 5px;
+					min-width:300px;
+			}
+			select.new{
+				background-color:#00E300;
+			}
+			optgroup{
+				font-style:normal;
+				color:#CCC;
+				padding-left:2px;
+				
+			}
+			option{
+				background-color:white;
+				padding-left:7px;
+			}
+			.box{
+				float:left;
+				margin-right:20px;
+			}
+			.aula strong{
+				color:#00E300;
+			}
+			.box.download{
+				display:none;
+			}
+			.download strong{
+				color:#E30000;
+			}
+			#content{
+				position:relative;
+				padding:20px;
+				background-color:#EEE;
+				height:auto;
+			}
+			#credits{
+				display:none;
+				position:absolute;
+				top:50%;
+				left:50%;
+				margin-left:-240px;
+				margin-top:-50px;
+				z-index:1000;
+				width:420px;
+				padding:30px;
+				background-color:black;
+				opacity:0.8;
+			}
+			#credits p{
+				color:white;
+			}
+			#credits strong{
+				color:white;
+				margin-right:10px;
+			}
+			iframe{
+				height:100%;
+				width:100%;
+				border:0 none;
+			}
+			.clear{
+				clear:both;
+			}
+			.bar{
+				position: absolute;
+				bottom: 10px;
+				right:10px;
+			}
+			/*botao*/
+			div.botao{
+				float:left;
+				background-color:#004080;
+				padding: 1px 0;
+				padding-left:1px;
+				opacity:0.5;
+				
+			}
+			div.botao:hover{
+				opacity:1;
+			}
+			div.botao>a{
+				background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAeCAYAAAFicr+mAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGxJREFUeNpiYEAHjEDMDGKwADEfiAEQQKiImQkkDhBADDgBSD8XjINiBkAAEYNQbGfHzgAIIAoRIxSjAJDhbNgE2YkSBAigQYhwepMJmyALNkFmeqgECLBRRDAamYhRiDXEcSlkHjiFLANjIgAgTQD6w7HbVgAAAABJRU5ErkJggg==);
+				background-repeat:repeat-x;
+				background-position:bottom left;
+				background-color:#FFF;
+				display:block;
+				height:22px;				
+				line-height:22px;
+				padding:0 8px 0 7px;
+				overflow:hidden;
+				color:#3293BE;
+				float:left;
+				margin-right:1px;
+				opacity:0.8;
+				font-size: 11px;
+				text-decoration: none;
+			}
+			div.botao>a.active{
+				background-color: orange;
+			}
+			div.botao>a:hover{
+				margin:-1px 0px -1px -1px;
+				border:1px solid black;
+				color:#115884;
+				opacity:1;
+			}
+			div.botao>a:active{
+				background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAeCAYAAAFicr+mAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAKxJREFUeNpiZGBgSAViBhYgfghiMAMxGxB/YgQS/CARgAACoVSQsAhYDkT8BgggkGQoTBKk9xGMA5IGyX4GYUaoLBgABBAjsl0fYIyPGIxPMMZnZPN+wc0CCCAQI5YBDcBNIF/wEzbBz+iCINs50QUBAgjuNXTtP4gW/EkvlcQL/qJM5S9socSCLggQYCDBRAYiAFZfUqzw58CZOKwU/qKqQkZoIUSUQkZiFAIAENgr9gQdQXIAAAAASUVORK5CYII=);
+				background-repeat:repeat-x;
+				background-position:top left;
+				background-color:white;
+			}
+			.botao>a>span{
+				background-repeat:no-repeat;
+				background-position: center center;
+				display:block;
+				float:left;
+				width:12px;
+				height:100%;
+				margin-right:4px;	
+			}
+			.botao.float-right{
+				float:right;
+			}
+			div.botao>a.no-text{
+				width:10px;
+			}
+			.botao>.delete>span{
+				background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAIZJREFUeNpiZACCg+q684GUARA72t+8/IEBCQDlBIDUfiC+AJRLZIQqToDKX0DWhKTYACq/gAWJwwBl7wcqdITy96PLM4FMhJqMogmLYrDtjDisRgdwpzJi8ZwBLsUgDhMDiYB0J+FQfAEpAFA0MeEKDVyhx4QmCLca6kl0TRcYSU0aAAEGAIJJR/kKSDcuAAAAAElFTkSuQmCC);
+			}
+			.botao>.download>span{
+				background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAElJREFUeNpiZEAGhXv+M2AD/S6MMCYTA4lgRGpghAbnfCCZQEDtAmDwJjIixQE+TWDFCBvwa4IrxtSAqQlFMW4A0gTRiAEAAgwAMAAWquu7PhgAAAAASUVORK5CYII=);
+			}
+			.botao>.refresh>span{
+				background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAANNJREFUeNp0UYERgjAMTDsBG4gTiBMI1wVwAhkBJtANwA3cQBfoCRs4giPUDfxg4GIPevdJePLlEwzx8ZQjMjZASo4KWjkGzTVyG/FbiN7zk6cSsQcXLIoD8IoEmWrm+g48UScWqiMeklUB0UlxtRX/qZCd5Mfc7qgZ7YjYyrD6ZYMcW7xKTq0ig4i6heWEqbBq4ETsLZ1pjnFLvbqh5U38tXqqEKtpNiOk/hcsvgEfYAeUit8bddMF8bxiiZsLXoaJPp+L30xWzfMN47rdz/ZXgAEAqo4vnIk80goAAAAASUVORK5CYII=);
+			}
+			.botao>.credits>span{
+				background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAALFJREFUeNpiZEAD3yfLGQCpACShC5y5jzbAOIxoCtcDsQIDJngAxIUgjYxQxQ5Aaj8DYRDIBGXMR3YCSAKIHaH0Aaj4ApAcI9D0AKhTYFYbAq3+gOYvBaAYSI4BZIMBktxCdMUgAFMM00ASYII6AwbisSkCOQlZAyiMYc5QAEruh4YaOPSAGOS/+0C6AR4PQE4CWkjhD1agpxZAg/ABDoUg8UB4xKG5NwAt5FCSBkCAAQC8AECUrUb74gAAAABJRU5ErkJggg==);
+			}
+		</style>
+		<!--[if lt IE 9]>
+        <style type="text/css" media="screen">
+        	div.botao{
+				filter: Alpha(Opacity=50);
+			}
+        	div.botao>a,#credits{
+				filter: Alpha(Opacity=80);
+			}
+    		div.botao>a:hover, div.botao:hover{
+				filter: Alpha(Opacity=100);
+			}
+        </style>
+		<![endif]-->
+		<script type="text/javascript" src="jquery.min.js"></script>
+		<script type="text/javascript">
+			<!--
+			var active = true;
+			var download = false;
+			function getLinks(disciplina,aula){
+				var url;
+				var ext;
+				var links = new Object();
+				
+				url = 'http://edad.rnp.br/redirect.rio?file=/cederj/sistemas_comp/ead050';
+				ext = '.flv';
+				links.video = url  + disciplina + '/Aula_0' + aula + '/Aula_0' + aula + ext
+
+				ext = '.xml';
+				links.xml = getPathXml() + 'sistemas_comp/ead050' + disciplina + '/aula_0' + aula + '/aula_0' + aula + ext
+				
+				ext = '.flv';
+				links.flv = getPathXml() + 'sistemas_comp/ead050' + disciplina + '/aula_0' + aula + '/aula_0' + aula + ext
+				
+				minha_div = "<!DOCTYPE html>" + "<html>" + "<head>" + "<meta charset='utf-8' />" + "<title>Rioflashclient</title>" + "<style> html, body {height: 100%; width: 100%; overflow:hidden; margin:0; padding:0; background-color:#fff;} </style>" + "</head>" + "<body>" + "<object id='rioflashclient2' type='application/x-shockwave-flash' data='"+getPath()+"rioflashclient2.swf' width='100%' height='100%'>" + "<param name='movie' value='"+getPath()+"rioflashclient2.swf' />" + "<param name='quality' value='high' />" + "<param name='flashvars' value='xmlfile=" + links.xml + "' />" + "<param name='wmode' value='opaque' />" + "<param name='allowScriptAccess' value='sameDomain' />" + "<param name='allowFullScreen' value='true' />" + "<param name='scale' value='default' />" + "<param name='bgcolor' value='#FFFFFF' />" + "</object>" + "</body>" + "</html>";
+				document.getElementById('content').innerHTML = minha_div;
+				// Pensar em uma funcao para verificar a existencia do FLV para exibir a box
+				// download ou nao.
+				//function is_img(file) {
+				//	var img = new Image();
+				//	alert(img);
+				//	img.src = file;
+				//	img.onload = function() {
+				//		alert("O video " + file + " existe");
+				//	}
+				//	img.onerror = function() {
+				//		alert("O video " + file + " NAO existe");
+				//	}
+				//}
+				//is_img("imagem-garfield.jpg");
+				//is_img("imagem-garfield-2.jpg");
+				//is_img(links.flv);
+				
+				return links;
+			}
+			function getPath(){
+				var path = location.href;
+				path = path.substring(0,path.lastIndexOf("/")+1);
+				return path;
+			}
+			function getPathXml(){
+				return getPath().replace(":///","://");
+			}
+			function remove(){
+				remove_div = "";
+				document.getElementById('content').innerHTML = remove_div;
+			}
+			function getAula(){
+				var body = $('#content');
+				var disc = $('#disciplina').val();
+				var aulas = $('#aulas').val();
+				if (aulas > 0) {
+					remove()
+					var aula = aulas < 10 ? "0" + aulas.toString() : aulas.toString();
+					var links = getLinks(disc,aula);
+					var iframe = $('<iframe>', {
+						src: links.aula,
+						frameborder:0
+					})
+					body.append(iframe);
+					var download = $('.box.download');
+					download.find('a.download').attr('href',links.video);
+					download.show();
+				}
+			}
+			function setCombo(e){
+				var aulas = $('#aulas');
+				var count = e.find('option:selected').attr('data-length');
+				var index = $('<option>',{text:'Selecione a aula'});
+				aulas.empty().append(index);
+				for(var i = 0; i < count; i++){
+					var newOption = $('<option>',{text:'Aula '+(i+1),value:i+1});
+					aulas.append( newOption);
+				}
+				aulas.addClass('new');
+			}
+			function setSize(){
+				if(active){
+					active = false;
+					var div = $('#content');
+					div.height(0);
+					var sel = $('#selector').outerHeight(true);
+					var doc = $(window).height();
+					var dif = div.outerHeight(true) - div.height();
+					var total = (doc - sel) - dif;
+					div.height (total);
+					active = true;
+				}
+			}
+			$(document).ready(function(){
+				setSize();
+				$(window).resize(function() {
+					setSize();
+				});
+				$('#disciplina').focus();
+				$('#selector').delegate('.new','click',function(){
+					$(this).removeClass('new');
+				}).delegate('.new','focus',function(){
+					$(this).removeClass('new');
+				}).delegate('select','change',function(){
+					var e  = $(this);
+					if(e.is('#disciplina')){
+						setCombo(e);
+					}else{
+						getAula(e);
+					}
+				});
+				
+				$('.botao').delegate('a','click',function(){
+					var e  = $(this);
+					if(e.is('.refresh'))getAula();
+					if(e.is('.download'))return true;
+					if(e.is('.delete'))remove();
+					if(e.is('.credits'))$('#credits').toggle();
+					return false;
+				});
+				$('#credits').click(function(){
+					$(this).fadeOut('normal');
+				});
+			});
+			// -->
+		</script>
+	</head>
+	<body>
+		<div id="selector">
+			<div class="box disciplina">
+				<h2><strong>1</strong>Selecione a disciplina</h2>
+				<select id="disciplina">
+					<option selected="selected">Selecione uma disciplina</option>
+					<optgroup label="1° Periodo">
+						<option value="01" data-length="13">Introdução à Informática </option>
+						<option value="02" data-length="20">Construção de Página Web</option>
+						<option value="04" data-length="24">Fundamentos de Algoritmos para Computação</option>
+						<option value="05" data-length="15">Projeto e Desenvolvimento de Algoritmos</option>
+					</optgroup>
+					<optgroup label="2° Periodo">
+						<option value="06" data-length="15">Álgebra Linear</option>
+						<option value="07" data-length="36">Estrutura de Dados</option>
+						<option value="08" data-length="09">Matemática para Computação</option>
+						<option value="09" data-length="14">Fundamentos de Programação </option>
+					</optgroup>
+					<optgroup label="3° Periodo">
+						<option value="10" data-length="10">Organização de Computadores</option>
+						<option value="11" data-length="23">Modelagem de Informação</option>
+						<option value="12" data-length="12">Probabilidade e Estatística</option>
+						<option value="13" data-length="17">Programação I</option>
+					</optgroup>
+					<optgroup label="4° Periodo">
+						<option value="14" data-length="29">Banco de Dados</option>
+						<option value="15" data-length="26">Física para Computação</option>
+						<option value="16" data-length="12">Sistemas Operacionais</option>
+						<option value="17" data-length="14">Programação II</option>
+					</optgroup>
+					<optgroup label="5° Periodo">
+						<option value="18" data-length="24">Arquitetura e Projeto de Sistemas I</option>
+						<option value="19" data-length="18">Engenharia de Software</option>
+						<option value="20" data-length="14">Redes de Computadores I</option>
+						<option value="21" data-length="13">Programação III</option>
+					</optgroup>
+					<optgroup label="6° Periodo">
+						<option value="22" data-length="21">Arquitetura e Projeto de Sistemas II</option>
+						<option value="23" data-length="19">Computação Gráfica</option>
+						<option value="24" data-length="14">Empreendedorismo e Ética Profissional</option>
+						<option value="25" data-length="23">Redes de Computadores II</option>
+					</optgroup>
+				</select>
+			</div>
+			<div class="box aula">
+				<h2><strong>2</strong>Selecione a aula</h2>
+				<select id="aulas">
+					<option selected="selected"></option>
+				</select>
+			</div>
+			<div class="box download">
+				<h2><strong>3</strong>Baixar</h2>
+				<div class="botao">
+					<a href="#" class="download" title="Baixar Aula"><span></span>Download do vídeo</a>
+				</div>
+			</div>
+			<div class="bar">
+				<div class="botao">
+					<a href="#" class="refresh no-text" title="Recarregar Aula"><span></span>Recarregar</a>
+					<a href="#" class="delete no-text" title="Remover Aula"><span></span>Remover</a>
+					<a href="#" class="credits no-text" title="Créditos"><span></span>Créditos</a>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div id="content">
+		</div>
+		<div id="credits">
+			<p><strong>Proto(SG)</strong>Desenvolvimento: html, javascript/jquery e css</p>
+			<p><strong>Educ. Bruno(NIT)</strong>Ideia de Projeto</p>
+			<p><strong>gustavomca(Saq)</strong>Download flv</p>
+			<p><strong>Sandro Reis(NIg)</strong>Aulas Localmente</p>
+			<p>1° versão [WEBAula] - 04/07/2011 - html5 e css3 válidos</p>
+			<p>1° versão [OFFAula] - 28/05/2013 - </p>
+			<p>30/05/2013 - Versão 0.1</p>
+		</div>
+	
+</body></html>
